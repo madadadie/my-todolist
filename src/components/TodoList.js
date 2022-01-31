@@ -11,12 +11,14 @@ const TodoList = () => {
     setModal(!modal)
   }
 
-  const saveTask = (taskObj ) => {
-    let tempTaskList = taskList
+  const saveTask = (taskObj) => {
+    let tempList = taskList
+    tempList.push(taskObj)
+    setTaskList(tempList)
 
-    tempTaskList.push(taskObj) 
+    console.log(taskList[0].Name)
+    setModal(false)
 
-    setTaskList(tempTaskList)
   }
 
   return (
@@ -31,7 +33,13 @@ const TodoList = () => {
           Add Task
         </button>
       </div>
-      <CreateTask modal={modal} toggle={toggle} save ={saveTask}/>
+
+      <div className="task-container">
+
+        <p>text</p>
+        {taskList.map((obj) => <li>{obj.Name}</li> )}
+      </div>
+      <CreateTask modal={modal} toggle={toggle} save={saveTask} />
     </>
 
   );

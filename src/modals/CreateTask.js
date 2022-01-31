@@ -24,7 +24,7 @@ const CreateTask = ({ modal, toggle, save }) => {
         taskObj["Name"] = taskName
         taskObj["Description"] = description
         save(taskObj)
-        console.log(taskObj)
+
 
     }
     return (
@@ -34,7 +34,7 @@ const CreateTask = ({ modal, toggle, save }) => {
             <ModalBody>
 
                 <div className="form-group">
-                    <label>Task Name</label>
+                    <label>Title</label>
                     <input type="text" placeholder='Your task' className="form-control" value={taskName} onChange={handleChange} name="taskName" />
                 </div>
                 <div className="form-group">

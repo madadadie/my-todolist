@@ -1,9 +1,10 @@
-.main-container {
-    background-color:#1F003D ;
+.task-container {
+ color: black;
 } 
 
 .header {
     height:200px;
     width: 100%;
     padding-top: 50px;
+    background-color:#1F003D ;
 } 
