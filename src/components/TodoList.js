@@ -7,6 +7,15 @@ const TodoList = () => {
 
   const [taskList, setTaskList] = useState([])
 
+  useEffect(() => {
+    let arr = localStorage.getItem("taskList")
+
+    if (arr) {
+      let obj = JSON.parse(arr)
+      setTaskList(obj)
+    }
+  }, [])
+
   const toggle = () => {
     setModal(!modal)
   }
@@ -14,9 +23,8 @@ const TodoList = () => {
   const saveTask = (taskObj) => {
     let tempList = taskList
     tempList.push(taskObj)
-    setTaskList(tempList)
-
-    console.log(taskList[0].Name)
+    localStorage.setItem("taskList", JSON.stringify(tempList))
+    setTaskList(taskList)
     setModal(false)
 
   }
@@ -37,7 +45,7 @@ const TodoList = () => {
       <div className="task-container">
 
         <p>text</p>
-        {taskList.map((obj) => <li>{obj.Name}</li> )}
+        {taskList.map((obj) => <li>{obj.Name}</li>)}
       </div>
       <CreateTask modal={modal} toggle={toggle} save={saveTask} />
     </>
