@@ -4,14 +4,10 @@ import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 
 const TodoList = props => {
     return (
-        <div>
-            <h3>What are your daily tasks ?</h3>
-            <div class="form-group">
-                <input placeholder='Add task...' type='text' className='todo-input'/>
-            </div>
-
-          <button className='todo-button'>
-            ADD
+        <div className ='header text-center'>
+          <h3 className="text-white">What are your daily tasks ?</h3>
+          <button type="button" class="btn btn-light mt-3">
+            Add Task
           </button>
         </div>
     );
