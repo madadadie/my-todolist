@@ -1,5 +1,6 @@
-import React, {useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CreateTask from '../modals/CreateTask'
+import Card from './Card';
 
 const TodoList = () => {
 
@@ -7,6 +8,7 @@ const TodoList = () => {
 
   const [taskList, setTaskList] = useState([])
 
+  //is activated when the list values change
   useEffect(() => {
     let arr = localStorage.getItem("taskList")
 
@@ -24,7 +26,7 @@ const TodoList = () => {
     let tempList = taskList
     tempList.push(taskObj)
     localStorage.setItem("taskList", JSON.stringify(tempList))
-    setTaskList(taskList)
+    setTaskList(taskList) //update tasklist
     setModal(false)
 
   }
@@ -43,9 +45,7 @@ const TodoList = () => {
       </div>
 
       <div className="task-container">
-
-        <p>text</p>
-        {taskList.map((obj) => <li>{obj.Name}</li>)}
+        {taskList.map((obj, index) => <Card taskObj={obj} index={index} />)}
       </div>
       <CreateTask modal={modal} toggle={toggle} save={saveTask} />
     </>
