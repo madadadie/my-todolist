@@ -31,6 +31,22 @@ const TodoList = () => {
 
   }
 
+  const deleteTask = (index) => {
+    let tempList = taskList
+    tempList.splice(index, 1)
+    localStorage.setItem("taskList", JSON.stringify(tempList))
+    setTaskList(tempList)
+    window.location.reload()
+}
+
+const updateListArray = (obj, index) => {
+    let tempList = taskList
+    tempList[index] = obj
+    localStorage.setItem("taskList", JSON.stringify(tempList))
+    setTaskList(tempList)
+    window.location.reload()
+}
+
   return (
     <>
       <div className='header text-center'>
@@ -45,7 +61,7 @@ const TodoList = () => {
       </div>
 
       <div className="task-container">
-        {taskList.map((obj, index) => <Card taskObj={obj} index={index} />)}
+        {taskList && taskList.map((obj, index) => <Card taskObj={obj} index={index} deleteTask={deleteTask} updateListArray={updateListArray} />)}
       </div>
       <CreateTask modal={modal} toggle={toggle} save={saveTask} />
     </>
